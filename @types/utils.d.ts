@@ -1,0 +1,14 @@
+import { AxiosError } from 'axios';
+export declare const handleError: (reason: AxiosError<any>) => void;
+export declare const singular: (value: string) => string;
+export declare const pluralize: (value: string) => string;
+export declare const stripHtml: (value: string) => string;
+export declare const kebabCase: (str: string) => string;
+export declare const DASHBOARD_OBJECT = "___DASHBOARD__OBJECT___";
+export declare const DASHBOARD_IMAGE_KEY_PREFIX = "___DASHBOARD___IMAGE___";
+export declare function arrayToFileList(files: File[]): FileList;
+export declare function mergeFiles(files1: File[], files2: File[]): File[];
+export declare function mergeFileLists(files1: FileList, files2: FileList): FileList;
+export declare function diffFiles(oldFiles: FileList | null, newFiles: FileList): Array<File[]>;
+export declare function messageType(value: any): string;
+export declare function removeFile(fileList: FileList, file: File): FileList;

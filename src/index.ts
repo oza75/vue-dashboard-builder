@@ -1,0 +1,61 @@
+import VueDashboard from './VueDashboard';
+import Entity from './Generators/Entity';
+import Relation from './Generators/Relation';
+import Action from './Generators/Action';
+import Field from './Generators/Field';
+import Rules from './Generators/Rules';
+import BelongsTo from './Generators/Relations/BelongsTo';
+import HasMany from './Generators/Relations/HasMany';
+import HasOne from './Generators/Relations/HasOne';
+import BooleanField from './Generators/Fields/BooleanField';
+import DateField from './Generators/Fields/DateField';
+import FileField from './Generators/Fields/FileField';
+import HasOneField from './Generators/Fields/HasOneField';
+import IdField from './Generators/Fields/IdField';
+import ImageField from './Generators/Fields/ImageField';
+import MoneyField from './Generators/Fields/MoneyField';
+import RadioField from './Generators/Fields/RadioField';
+import SelectField from './Generators/Fields/SelectField';
+import TextareaField from './Generators/Fields/TextareaField';
+import TextField from './Generators/Fields/TextField';
+import TrixField from './Generators/Fields/TrixField';
+import NumberField from './Generators/Fields/NumberField';
+import * as Helpers from './Generators/Helpers';
+// Auto-install when vue is found (eg. in browser via <script> tag)
+if (typeof window !== 'undefined') {
+  (window as any).VueDashboard = VueDashboard;
+} else {
+  // @ts-ignore
+  if (typeof global !== 'undefined') {
+    // @ts-ignore
+    (window as any).VueDashboard = VueDashboard;
+  }
+}
+// To allow use as module (npm/webpack/etc.) export component
+export {
+  VueDashboard,
+  Entity,
+  Relation,
+  Action,
+  Field,
+  Rules,
+  BelongsTo,
+  HasOne,
+  HasMany,
+  BooleanField,
+  DateField,
+  FileField,
+  HasOneField,
+  IdField,
+  ImageField,
+  MoneyField,
+  RadioField,
+  SelectField,
+  TextareaField,
+  TextField,
+  TrixField,
+  NumberField,
+  Helpers
+};
+
+export default VueDashboard;

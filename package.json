@@ -1,0 +1,44 @@
+{
+  "name": "vue-dashboard-builder",
+  "version": "0.0.1",
+  "description": "A Vuejs Library to generates a dashboard for you",
+  "author": {
+    "email": "abouba181@gmail.com",
+    "name": "Zié Aboubacar OUATTARA",
+    "url": "https://github.com/oza75"
+  },
+  "bugs": {
+    "url": "https://github.com/oza75/vue-dashboard-builder/issues",
+    "email": "abouba181@gmail.com"
+  },
+  "homepage": "https://github.com/oza75/vue-dashboard-builder#readme",
+  "keywords": [],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oza75/vue-dashboard-builder.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:bundle": "rm -rf dist && vue-cli-service build --target lib --name generator ./src/index.ts && mv dist/generator.css css/generator.css && mkdir dist/umd && mv dist/generator.umd.* dist/umd"
+  },
+  "main": "dist/generator.common.js",
+  "types": "@types/",
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.6",
+    "@types/jest": "^25.1.4",
+    "axios": "^0.19.2",
+    "dayjs": "^1.8.20",
+    "pluralize": "^8.0.0",
+    "uglify-js": "^3.7.7",
+    "vue-click-outside": "^1.0.7",
+    "vue-trix": "^1.1.7",
+    "vuejs-datepicker": "^1.6.2"
+  },
+  "devDependencies": {
+    "clean-css": "^4.2.3",
+    "csso": "^4.0.2",
+    "postcss-cli": "^7.1.0",
+    "tailwindcss": "^1.2.0"
+  }
+}
