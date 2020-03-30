@@ -48,7 +48,7 @@ class Messages {
       value = type ? value[type] : value[Object.keys(value)[0]];
     }
     Object.keys(params).forEach(function (key) {
-      let rgx: RegExp = new RegExp(`:${key}`);
+      const rgx: RegExp = new RegExp(`:${key}`);
       value = value.replace(rgx, params[key]);
     });
 

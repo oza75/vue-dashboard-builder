@@ -61,9 +61,9 @@ export class ImageEdit extends mixins(EditMixin) {
   }
 
   upload (files: FileList) {
-    for (let file of files) {
+    for (const file of files) {
       this.attached.push(file);
-      let reader = new FileReader();
+      const reader = new FileReader();
       reader.addEventListener('load', () => {
         this.base64Urls.push(reader.result);
       });
@@ -77,7 +77,7 @@ export class ImageEdit extends mixins(EditMixin) {
         if (!this.valueKey) {
           throw new Error('When using multiple is true you need to set a valueKey and srcKey. call `.valueKey()` in your entity');
         }
-        let detached = this.multiple ? this.renderValue[index][this.valueKey] : item;
+        const detached = this.multiple ? this.renderValue[index][this.valueKey] : item;
         this.detached.push(detached);
       } else this.detached.push(item);
       this.images.splice(index, 1);
@@ -90,14 +90,14 @@ export class ImageEdit extends mixins(EditMixin) {
   @Watch('detached', { deep: true })
   onRemoved (detached: Array<any>) {
     if (!this.multiple) return;
-    let value: any = Object.assign({}, this.formData[this.imageKey]);
+    const value: any = Object.assign({}, this.formData[this.imageKey]);
     value['detached'] = detached;
     this.$emit('input', this.imageKey, value);
   }
 
   @Watch('attached', { deep: true })
   onFileAdded (files: File[]) {
-    let value = Object.assign({}, this.formData[this.imageKey]);
+    const value = Object.assign({}, this.formData[this.imageKey]);
     value['attached'] = arrayToFileList(files);
     this.$emit('input', this.imageKey, this.multiple ? value : files[0]);
   }

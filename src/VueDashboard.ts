@@ -1,9 +1,9 @@
 import { Vue as _Vue } from 'vue/types/vue';
 import { Config } from './types';
 import { NavigationGuard, RawLocation, Route, RouteConfig } from 'vue-router';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import DefaultConfig from './config';
-import { handleError, kebabCase, pluralize, singular, stripHtml } from './utils';
+import { handleError, pluralize, singular, stripHtml } from './utils';
 import { AlertInstance } from './Components/Alert/AlertContainer';
 import _confirm from './Components/Confirm/Confirm';
 // import moment from 'moment';
@@ -24,9 +24,9 @@ function install (Vue: typeof _Vue, options: any) {
   install.installed = true;
 
   // registering routes
-  let config: Config = Object.assign(DefaultConfig, options.config);
-  let prefix: string = '/' + config.prefix;
-  let entities: Array<any> = options.entities || [];
+  const config: Config = Object.assign(DefaultConfig, options.config);
+  const prefix: string = '/' + config.prefix;
+  const entities: Array<any> = options.entities || [];
   if (config.getAuthorizationHeader()) {
     axios.defaults.headers['Authorization'] = config.getAuthorizationHeader();
   }
@@ -113,10 +113,10 @@ function install (Vue: typeof _Vue, options: any) {
     confirm: _confirm,
     dayjs: dayjs,
     translate: (key: string, params: any = {}) => {
-      let language = config.language || navigator.language;
-      let defaultLanguage = config.defaultLanguage;
-      let messages = config.translation[language] || {};
-      let message: string = messages[key] || (config.translation[defaultLanguage] || {})[key] || key;
+      const language = config.language || navigator.language;
+      const defaultLanguage = config.defaultLanguage;
+      const messages = config.translation[language] || {};
+      const message: string = messages[key] || (config.translation[defaultLanguage] || {})[key] || key;
       return Object.keys(params).reduce((acc: string, k: string) => {
         acc = acc.replace(new RegExp(':' + k, 'gm'), params[k]);
         return acc;

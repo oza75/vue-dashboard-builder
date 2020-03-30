@@ -1,7 +1,7 @@
 <template>
   <div class="alert-component-container">
     <transition name="slide-left">
-      <div class="alert-component shadow-lg rounded-lg" v-if="alert.isVisible" :class=" classes ">
+      <div class="alert-component shadow-lg rounded-lg" v-if="alert.isVisible" :class="classes">
         <div class="icon"><i :class="icons[alert.type]"></i></div>
         <div class="content" v-html="alert.message"></div>
       </div>
@@ -41,8 +41,8 @@
     }
 
     get classes () {
-      let type: string = `v-alert-${this.alert.type}`;
-      let classes: any = {};
+      const type: string = `v-alert-${this.alert.type}`;
+      const classes: any = {};
       classes[type] = true;
 
       return classes;

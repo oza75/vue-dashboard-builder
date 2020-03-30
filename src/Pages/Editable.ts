@@ -1,4 +1,4 @@
-import { Component, Provide, Vue, Watch } from 'vue-property-decorator';
+import { Component, Provide, Vue } from 'vue-property-decorator';
 import { Route } from 'vue-router';
 import EditComponent from '../Components/Edit.vue';
 
@@ -20,7 +20,7 @@ class Editable extends Vue {
 
   removeError (component: any) {
     // @ts-ignore
-    let index = this.errors.find(item => item._uid === component._uid);
+    const index = this.errors.find(item => item._uid === component._uid);
     if (index) this.errors.splice(index, 1);
   }
 
@@ -41,7 +41,7 @@ class Editable extends Vue {
   }
 
   get allFields (): Array<any> {
-    let items = this.fields;
+    const items = this.fields;
     this.singleValueRelations.forEach(r => {
       if (r.getPosition() <= 0) items.unshift(r);
       else if (r.getPosition() >= this.fields.length) items.push(r);
@@ -56,7 +56,7 @@ class Editable extends Vue {
   }
 
   routeChanged (route: Route) {
-    let entity = this.$admin.entities.find(entity => entity.name === route.params.name);
+    const entity = this.$admin.entities.find(entity => entity.name === route.params.name);
     if (!entity) {
       this.$router.push(this.$admin.resolveUrl('/'));
     }

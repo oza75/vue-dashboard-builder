@@ -1,4 +1,4 @@
-import Entity from "./Entity";
+import Entity from './Entity';
 
 abstract class Relation {
   protected parent: Entity;
@@ -45,4 +45,3 @@ abstract class Relation {
 }
 
 export default Relation;
-

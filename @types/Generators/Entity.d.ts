@@ -1,7 +1,7 @@
-import Field from "./Field";
+import Field from './Field';
 import { ResponseResolver } from './type';
-import Action from "./Action";
-import Relation from "./Relation";
+import Action from './Action';
+import Relation from './Relation';
 export default abstract class Entity {
     title: string;
     description?: string;

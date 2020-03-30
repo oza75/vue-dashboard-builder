@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import { Component } from 'vue-property-decorator';
   import { mixins } from 'vue-class-component';
   import { TableShowMixin } from '../Mixins';
 

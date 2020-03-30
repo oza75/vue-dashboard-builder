@@ -41,7 +41,7 @@
       this.$admin.axios.post(this.$admin.config.baseUrl + url, this.datum)
         .then((res: any) => {
           // @ts-ignore
-          let token = this.$admin.config.loginForm.retrieveAccessToken(res);
+          const token = this.$admin.config.loginForm.retrieveAccessToken(res);
           window.localStorage.setItem(this.$admin.config.accessToken, token);
 
           // @ts-ignore
@@ -53,9 +53,6 @@
         .finally(() => {
           this.running = false;
         });
-    }
-
-    mounted () {
     }
   }
 </script>

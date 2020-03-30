@@ -27,8 +27,8 @@
     @Prop({ default: null }) value!: any;
 
     input ($event: any) {
-      let value: string = $event.target.value;
-      let item: any = this.options.find(item => {
+      const value: string = $event.target.value;
+      const item: any = this.options.find(item => {
         if (typeof item === 'object') {
           // eslint-disable-next-line eqeqeq
           return item[this.valueKey] == value;

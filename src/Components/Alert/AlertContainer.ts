@@ -13,7 +13,7 @@ class AlertContainer {
   private _alerts: Array<Alert> = [];
 
   add (type: AlertType, message: string) {
-    let alert: Alert = new Alert();
+    const alert: Alert = new Alert();
     this.alerts.push(alert);
     alert.type = type;
     alert.message = message;

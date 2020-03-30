@@ -1,8 +1,5 @@
 import { AxiosError } from 'axios';
 import { error } from './Components/Alert/AlertContainer';
-import { Vue } from 'vue/types/vue';
-import { DirectiveOptions, VNode } from 'vue';
-import { DirectiveBinding } from 'vue/types/options';
 
 const pluralizer = require('pluralize');
 export const handleError = (reason: AxiosError) => {
@@ -27,14 +24,14 @@ export const pluralize = (value: string): string => {
 };
 
 export const stripHtml = (value: string): string => {
-  let tmp = document.createElement('DIV');
+  const tmp = document.createElement('DIV');
   tmp.innerHTML = value;
   return tmp.textContent || tmp.innerText || '';
 };
 
 export const kebabCase = (str: string) => {
   if (!str) return '';
-  let parts = str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g);
+  const parts = str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g);
   if (!parts) return '';
   return parts.map(x => x.toLowerCase()).join('-');
 };

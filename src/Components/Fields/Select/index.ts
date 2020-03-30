@@ -36,7 +36,7 @@ export class BaseSelectViewable extends mixins<BaseSelect>(BaseSelect) {
     let value = this.value;
     if (this.displayUsingLabel) {
       // eslint-disable-next-line eqeqeq
-      let result = this.opts.find((item: any) => {
+      const result = this.opts.find((item: any) => {
         if (typeof item === 'object') {
           // eslint-disable-next-line eqeqeq
           return item[this.valueKey] == value;

@@ -23,11 +23,11 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
-  import { Admin, SidebarLink } from '../types';
   // @ts-ignore
   import AlertComponent from '../Components/Alert/Component.vue';
   // @ts-ignore
   import ConfirmModal from '../Components/Confirm/ConfirmModal.vue';
+  import { SidebarLink } from '../types';
 
   @Component({ components: { AlertComponent, ConfirmModal } })
   export default class DashboardIndex extends Vue {

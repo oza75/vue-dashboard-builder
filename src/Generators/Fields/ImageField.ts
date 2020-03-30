@@ -1,4 +1,4 @@
-import { AltFunction, Components, RenderFunction, DetachKeyResolver } from '../type';
+import { AltFunction, DetachKeyResolver } from '../type';
 import FileField from './FileField';
 
 class ImageField extends FileField {

@@ -1,4 +1,4 @@
-import { Components, RenderFunction, RenderFunctions } from "./type";
+import { Components, RenderFunction, RenderFunctions } from './type';
 import { Rule } from './Rules';
 export default abstract class Field {
     protected column: string;
