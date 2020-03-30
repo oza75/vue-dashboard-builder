@@ -6,17 +6,23 @@ const config: Config = {
   accessToken: 'dashboard_access_token',
   defaultLanguage: 'en',
   relationKey: 'with',
-  // loginForm: {
-  //   title: 'Login',
-  //   buttonText: 'Login',
-  //   url: '/login',
-  //   retrieveAccessToken: (res: any) => res.data.access_token,
-  //   fields: [{ label: 'Email', name: 'email', type: 'email' }, {
-  //     label: 'Password',
-  //     name: 'password',
-  //     type: 'password'
-  //   }]
-  // },
+  loginForm: {
+    title: 'Login',
+    buttonText: 'Login',
+    url: '/login',
+    retrieveAccessToken: (res: any) => res.data.access_token,
+    fields: [
+      {
+        label: 'Email',
+        name: 'email',
+        type: 'email'
+      },
+      {
+        label: 'Password',
+        name: 'password',
+        type: 'password'
+      }]
+  },
   resolveIcon: (icon: string) => {
     if (!icon) return '';
     return `<i class="${icon}"></i>`;

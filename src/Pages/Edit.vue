@@ -54,7 +54,7 @@
         formData.append('_method', 'PUT');
         request = this.$admin.axios.post;
       } else {
-        formData = new Form(this.formData).toFormData();
+        formData = new Form(this.formData).toObject();
         request = this.$admin.axios.put;
       }
 

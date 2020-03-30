@@ -12,7 +12,7 @@ export default abstract class Entity {
   public description?: string;
   public name: string;
   public icon?: string;
-  // the default key of the entity is will be used
+  // the default key of the entity will be used
   // for example to display correct value of the entity
   // in hasMany relation
   public defaultKey?: string;
