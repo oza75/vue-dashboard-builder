@@ -16,11 +16,12 @@
     isOpened: boolean = false;
 
     get isLongText (): boolean {
-      let str: string = this.$admin.helpers.stripHtml(this.value);
+      const str: string = this.$admin.helpers.stripHtml(this.value);
       return str.length > 200;
     }
 
     @Watch('value', { immediate: true })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onItemChanged (item: string) {
       this.isOpened = !this.isLongText;
     }

@@ -89,6 +89,7 @@
       this.$admin.confirm.ask(this.$admin.translate('are_you_sure_to_delete') || '', this.$admin.translate('are_you_sure') || '')
         .then(() => {
           this.$admin.axios.delete(this.entity.buildDeleteUrl(this.$admin.config.baseUrl, this.datum[this.entity.getKey()]))
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             .then((res: any) => {
               this.$admin.alert.success(this.$admin.translate('deleted') || '');
               this.$router.back();

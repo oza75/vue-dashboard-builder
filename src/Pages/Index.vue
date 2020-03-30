@@ -38,7 +38,6 @@
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator';
   import { Route } from 'vue-router';
-  import { Admin } from '../types';
 
   @Component
   export default class Index extends Vue {
@@ -61,12 +60,12 @@
     get computedQueries (): any {
       // return an object that contains queries
       // that will be added to request url
-      let queries: any = this.queries;
+      const queries: any = this.queries;
       queries['sort_by'] = this.entity.getKey(); // adding sort_by query
       // if the entity accept searching
       if (this.entity.isSearchable) {
         // we add search_in columns to the queries object
-        let sIn: Array<any> = this.entity.getSearchIn();
+        const sIn: Array<any> = this.entity.getSearchIn();
         queries[this.entity.getSearchKey()] = this.search;
         if (sIn.length) queries['search_in'] = sIn;
       }
@@ -109,11 +108,12 @@
       // set loading to true that let user knows something is going on
       this.loading = true;
       // we retrieve selected items
-      let items = this.docs.filter(item => this.selected.includes(item[this.entity.getKey()]));
+      const items = this.docs.filter(item => this.selected.includes(item[this.entity.getKey()]));
       // we set action context and then we will be able to access some data like vuejs component etc..
       this.selectedAction.setContext({ vm: this, admin: this.$admin, config: this.$admin.config });
       // then we run the action and pass it the selected items and the the entity
       this.selectedAction.run(items, this.entity)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .then((res: any) => {
             this.fetch(); // if the action finished running we refetch data from api
             this.loading = false; // we reset loading to false
@@ -141,7 +141,7 @@
     @Watch('$route', { immediate: true, deep: false })
     onRouteChanged (route: Route) {
       // we retrieve the given entity for entities passed to the VueDashboard options
-      let entity = this.$admin.entities.find(entity => entity.name === route.params.name);
+      const entity = this.$admin.entities.find(entity => entity.name === route.params.name);
       // if we do not find anything, we redirect to the homepage
       if (!entity) {
         this.$router.push(this.$admin.config.prefix ? '/' + this.$admin.config.prefix : '/');
@@ -157,6 +157,7 @@
     // if user try to search we set a timeout(debounce system) and after that time we ->
     // we fetch data from api
     @Watch('search')
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onSearch (search: string) {
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {

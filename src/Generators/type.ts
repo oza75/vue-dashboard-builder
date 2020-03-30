@@ -1,11 +1,11 @@
 export interface Components {
-    edit: string,
-    show: string,
-    index: string
+    edit: string;
+    show: string;
+    index: string;
 }
 
 export interface RenderFunction {
-    (value: any, item?: any): string | any
+    (value: any, item?: any): string | any;
 }
 
 export interface RenderFunctions {
@@ -13,7 +13,7 @@ export interface RenderFunctions {
     render_show: RenderFunction[];
     render_edit: RenderFunction[];
 
-    [key: string]: RenderFunction[]
+    [key: string]: RenderFunction[];
 }
 
 export interface ResponseResolver {
@@ -25,5 +25,5 @@ export interface AltFunction {
     (value: string, item: any): string;
 }
 export interface DetachKeyResolver {
-  (value: any): string
+  (value: any): string;
 }

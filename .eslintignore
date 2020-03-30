@@ -2,4 +2,5 @@ generator
 Trash
 lib
 dist
+@types
 *.js
