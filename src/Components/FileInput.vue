@@ -69,9 +69,6 @@
 
       this.$emit('upload', files, (this as any).type);
     }
-
-    getFormData (files: Array<File>) {
-    }
   }
 </script>
 

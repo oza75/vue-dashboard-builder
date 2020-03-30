@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Provide, Vue, Watch } from 'vue-property-decorator';
+  import { Component, Watch } from 'vue-property-decorator';
   import { mixins } from 'vue-class-component';
   import Editable from './Editable';
   import Form from '../Form';
@@ -38,12 +38,12 @@
 
     save () {
       if (this.hasErrors) return;
-      let formData: FormData = new Form(this.formData).toFormData();
-      let url: string = this.entity.buildCreateUrl(this.$admin.config.baseUrl);
+      const formData: FormData = new Form(this.formData).toFormData();
+      const url: string = this.entity.buildCreateUrl(this.$admin.config.baseUrl);
       this.loading = true;
       this.$admin.axios.post(url, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
         .then((res: any) => {
-          let data = this.$admin.responseResolver(this.entity).data(res);
+          const data = this.$admin.responseResolver(this.entity).data(res);
           this.$router.push({
             name: 'dashboard.show',
             params: { name: this.entity.name, key: data[this.entity.getKey()] }

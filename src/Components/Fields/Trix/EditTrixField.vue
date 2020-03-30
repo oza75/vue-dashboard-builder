@@ -23,14 +23,14 @@
 
     handleAttachmentChanges (event: any) {
       // 1. get file object
-      let file = event.attachment.file;
+      const file = event.attachment.file;
       if (!file) return;
-      let url: string = this.concatBaseUrl ? this.$admin.config.baseUrl + this.uploadUrl : this.uploadUrl;
-      let formData: FormData = new FormData();
+      const url: string = this.concatBaseUrl ? this.$admin.config.baseUrl + this.uploadUrl : this.uploadUrl;
+      const formData: FormData = new FormData();
       formData.append(this.fileKey, file);
       // 2. upload file to remote server with FormData
       this.$admin.axios.post(url, formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then((res: any) => {
-        let data: any = this.field.resolveResponse() ? this.field.resolveResponse().data(res) : this.$admin.config.responseResolver.data(res);
+        const data: any = this.field.resolveResponse() ? this.field.resolveResponse().data(res) : this.$admin.config.responseResolver.data(res);
         event.attachment.setAttributes({ url: data['url'], href: data['href'] || data['url'], width: '100%' });
       });
     }

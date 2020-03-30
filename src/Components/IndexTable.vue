@@ -80,7 +80,7 @@
 
     selectAll (checked: boolean) {
       if (checked) {
-        let key: any = this.entity.getKey();
+        const key: any = this.entity.getKey();
         if (!key) return false;
         this.selection = this.items.map(item => item[key]);
       } else {
@@ -89,9 +89,9 @@
     }
 
     select (item: any) {
-      let value = item[this.entity.getKey()];
+      const value = item[this.entity.getKey()];
       if (!value) return false;
-      let index: number = this.selection.findIndex(item => item === value);
+      const index: number = this.selection.findIndex(item => item === value);
       if (index > -1) {
         this.selection.splice(index, 1);
       } else {
@@ -100,9 +100,9 @@
     }
 
     isSelected (item: any): boolean {
-      let value = item[this.entity.getKey()];
+      const value = item[this.entity.getKey()];
       if (!value) return false;
-      let index: number = this.selection.findIndex(item => item === value);
+      const index: number = this.selection.findIndex(item => item === value);
       return index > -1;
     }
 

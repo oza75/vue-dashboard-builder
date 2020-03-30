@@ -96,14 +96,14 @@
     get computedQueries (): any {
       // return an object that contains queries
       // that will be added to request url
-      let queries: any = this.queries;
+      const queries: any = this.queries;
       queries['sort_by'] = this.entity.getKey(); // adding sort_by query
       // *IMPORTANT* we add the parent entity id to the request
       queries[this.$admin.helpers.singular(this.parent.name) + '_id'] = this.parentId;
       // if the entity allows searching
       if (this.entity.isSearchable) {
         // we add search_in columns to the queries object
-        let sIn: Array<any> = this.entity.getSearchIn();
+        const sIn: Array<any> = this.entity.getSearchIn();
         queries[this.entity.getSearchKey()] = this.search;
         if (sIn.length) queries['search_in'] = sIn;
       }
@@ -156,6 +156,7 @@
         .then(() => {
           // if he confirms we make an request to the api
           this.$admin.axios.post(this.parent.buildDetachUrl(this.$admin.config.baseUrl), item)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             .then((res: any) => {
               // if the request success, we show a success message
               this.$admin.alert.success(this.$admin.translate('detached') || '');
@@ -172,6 +173,7 @@
       this.loading = 0;
       // we make a post request to the api that as data : the primaryKey of the item to be attached
       this.$admin.axios.post(this.parent.buildAttachUrl(this.$admin.config.baseUrl), this.itemToAttach)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .then((res: any) => {
           // if the request success, we show a success message
           this.$admin.alert.success(this.$admin.translate('attached') || '');
@@ -181,7 +183,7 @@
           if (closeModal) this.modalState = false;
         })
         .catch(this.$admin.handleError)
-        .then(_ => {
+        .then(() => {
           this.loading = -1;
         });
     }
@@ -191,7 +193,7 @@
       // we make a request with search params
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {
-        let queries: any = { search: query };
+        const queries: any = { search: query };
         if (this.entity.getSearchIn().length) queries['search_in'] = this.entity.getSearchIn().join(',');
         this.fetchNonAttached(queries);
       }, 500);
@@ -207,9 +209,10 @@
       // it will be better to use a mixin here
       if (!this.selectedAction) return false;
       this.running = true;
-      let items = this.docs.filter(item => this.selected.includes(item[this.entity.getKey()]));
+      const items = this.docs.filter(item => this.selected.includes(item[this.entity.getKey()]));
       this.selectedAction.setContext({ vm: this, admin: this.$admin, config: this.$admin.config });
       this.selectedAction.run(items, this.entity)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .then((res: any) => {
             this.fetch();
             this.running = false;
@@ -232,6 +235,7 @@
     }
     // same as the Index.vue onSearch
     @Watch('search')
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onSearch (search: string) {
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {

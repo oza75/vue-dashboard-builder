@@ -44,7 +44,7 @@
       // if we have no items we return null
       if (!this.items.length) return null;
       // else the selected item is the item is the index position
-      let item: any = this.items[this.index];
+      const item: any = this.items[this.index];
       // if item is a string we just return it
       if (typeof item === 'string') return item;
       // if the valueKey prop is not passed we return the whole item object
@@ -61,7 +61,7 @@
         // if item is a string we just return it
         if (typeof item === 'string') return item;
         // else we take the first key of item as the column of label and we return its value
-        let column: string = Object.keys(item)[0];
+        const column: string = Object.keys(item)[0];
         return item[column];
       }
       // if the textKey prop is an function
@@ -98,7 +98,7 @@
 
     scrollToItem (): void {
       // This function we scroll to the current item
-      let item: HTMLElement | Element | null = this.$el.getElementsByClassName('autocomplete-item-wrapper')[this.index];
+      const item: HTMLElement | Element | null = this.$el.getElementsByClassName('autocomplete-item-wrapper')[this.index];
       if (item && item.scrollIntoView) item.scrollIntoView(false);
     }
 

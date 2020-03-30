@@ -2,7 +2,7 @@ import Entity from './Entity';
 import Relation from './Relation';
 import Action from './Action';
 import Field from './Field';
-import Rules from './Rules'
+import Rules from './Rules';
 import BelongsTo from './Relations/BelongsTo';
 import HasMany from './Relations/HasMany';
 import HasOne from './Relations/HasOne';
@@ -42,7 +42,7 @@ export {
   TextField,
   TrixField,
   NumberField
-}
+};
 
 export default {
   Entity,
