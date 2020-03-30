@@ -1,9 +1,9 @@
-import Field from "./Field";
+import Field from './Field';
 import { ResponseResolver } from './type';
-import Action from "./Action";
-import HasOne from "./Relations/HasOne";
-import HasMany from "./Relations/HasMany";
-import Relation from "./Relation";
+import Action from './Action';
+import HasOne from './Relations/HasOne';
+import HasMany from './Relations/HasMany';
+import Relation from './Relation';
 
 const pluralize = require('pluralize');
 
@@ -58,9 +58,8 @@ export default abstract class Entity {
 
   public abstract relations (): Array<Relation>;
 
-
   private getEntityName (): string {
-    let name: string = this.constructor.name;
+    const name: string = this.constructor.name;
     if (name.includes('Entity')) {
       return name.replace('Entity', '');
     }
@@ -68,9 +67,8 @@ export default abstract class Entity {
     return name;
   }
 
-
   public buildIndexUrl (baseUrl: string, queries: any = {}): string {
-    let url: string = this.concatBaseUrl ? baseUrl + this.queryUrl : this.queryUrl;
+    const url: string = this.concatBaseUrl ? baseUrl + this.queryUrl : this.queryUrl;
     return this.addQueriesToUrl(url, queries);
   }
 
@@ -103,17 +101,17 @@ export default abstract class Entity {
   }
 
   protected addQueriesToUrl (url: string, queries: any = {}): string {
-    let params = new URLSearchParams({ ...this.extraParams, ...queries });
+    const params = new URLSearchParams({ ...this.extraParams, ...queries });
     if (params.toString().length) url += '?' + params;
     return url;
   }
 
-  //@ts-ignore
+  // @ts-ignore
   get responseResolver (): ResponseResolver | undefined {
     return this.resolveResponse();
   }
 
-  //@ts-ignore
+  // @ts-ignore
   get relatedFields (): Array<any> {
     return this._relatedFields;
   }
@@ -123,7 +121,7 @@ export default abstract class Entity {
   }
 
   public getKey (): string | null {
-    return this.primaryKey || (this.fields().length > 0 ? this.fields()[0].getColumn() : null)
+    return this.primaryKey || (this.fields().length > 0 ? this.fields()[0].getColumn() : null);
   }
 
   public isSearchable (): boolean {

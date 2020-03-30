@@ -1,6 +1,5 @@
-import { Vue, Component, Prop, Watch, Inject } from 'vue-property-decorator';
-import { DASHBOARD_OBJECT, messageType } from '../../../utils';
-import Form from '../../../Form';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { messageType } from '../../../utils';
 import RuleMessages from '../../../RuleMessages';
 
 @Component
@@ -37,8 +36,8 @@ export class EditMixin extends Vue {
     this.$emit('input', this.field.getColumn(), value);
     this.errors = {};
     this.rules.forEach(item => {
-      let rule = item[0];
-      let params = item[1] || [];
+      const rule = item[0];
+      const params = item[1] || [];
       if (!rule(value, params, this.inputElement)) {
         let type = this.$props['type'];
         type = type ? (['number', 'tel'].includes(type) ? 'numeric' : messageType(value)) : messageType(value);

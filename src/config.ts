@@ -29,7 +29,7 @@ const config: Config = {
   },
   getAuthorizationHeader () {
     // @ts-ignore
-    let token: string = window.localStorage.getItem(this.accessToken);
+    const token: string = window.localStorage.getItem(this.accessToken);
     if (token) return 'Bearer ' + token;
   },
   icons: {

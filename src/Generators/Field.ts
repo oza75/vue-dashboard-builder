@@ -1,6 +1,5 @@
-import { Components, RenderFunction, RenderFunctions } from "./type";
-import { Rule } from './Rules';
-import Rules from './Rules';
+import { Components, RenderFunction, RenderFunctions } from './type';
+import Rules, { Rule } from './Rules';
 
 export default abstract class Field {
   protected column: string;
@@ -34,15 +33,15 @@ export default abstract class Field {
   }
 
   renderInTable (f: RenderFunction): this {
-    return this.yield("render_in_table", f);
+    return this.yield('render_in_table', f);
   }
 
   renderShow (f: RenderFunction): this {
-    return this.yield("render_show", f);
+    return this.yield('render_show', f);
   }
 
   renderEdit (f: RenderFunction): this {
-    return this.yield("render_edit", f);
+    return this.yield('render_edit', f);
   }
 
   yield (type: string, f: RenderFunction): this {
@@ -144,17 +143,17 @@ export default abstract class Field {
   rules (rules: (Rule | (Rule | any)[] | string)[]): this {
     rules.forEach((rule: any) => {
       let params: any = null;
-      if (typeof rule === "object") {
+      if (typeof rule === 'object') {
         params = rule[1];
         rule = rule[0];
       }
 
-      if (typeof rule == 'string') {
+      if (typeof rule === 'string') {
         rule = Rules[rule] ? Rules[rule] : null;
       }
 
       if (rule) {
-        let formatted = params !== null ? (typeof params === "object" ? params : [params]) : [];
+        const formatted = params !== null ? (typeof params === 'object' ? params : [params]) : [];
         this._rules.push([rule as Rule, formatted]);
         if ((rule as Function).name) {
           this.addProp((rule as Function).name, params !== null ? params : true);

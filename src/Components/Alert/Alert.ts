@@ -13,16 +13,15 @@ class Alert {
     return this._type;
   }
 
+  set type (value: AlertType) {
+    this._type = value;
+  }
   get message (): string {
     return this._message;
   }
 
   set message (value: string) {
     this._message = value;
-  }
-
-  set type (value: AlertType) {
-    this._type = value;
   }
 
   visible () {

@@ -22,7 +22,8 @@
 </template>
 
 <script lang="ts">
-  import { Vue, Component, Prop } from 'vue-property-decorator';
+  import { Vue, Component } from 'vue-property-decorator';
+
   import _confirm, { Confirm } from './Confirm';
 
     @Component({

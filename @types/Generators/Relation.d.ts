@@ -1,4 +1,4 @@
-import Entity from "./Entity";
+import Entity from './Entity';
 declare abstract class Relation {
     protected parent: Entity;
     protected entity: Entity;

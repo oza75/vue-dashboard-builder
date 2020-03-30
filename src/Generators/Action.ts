@@ -1,4 +1,4 @@
-import Entity from "./Entity";
+import Entity from './Entity';
 
 abstract class Action {
   title: string | null;
@@ -9,10 +9,10 @@ abstract class Action {
   constructor (title?: string) {
     this.title = title || null;
     if (!this.name) {
-      this.name = this.constructor.name.replace('Action', '')
+      this.name = this.constructor.name.replace('Action', '');
     }
     if (!this.title) {
-      this.title = this.constructor.name.replace('Action', '')
+      this.title = this.constructor.name.replace('Action', '');
     }
   }
 

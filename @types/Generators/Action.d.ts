@@ -1,4 +1,4 @@
-import Entity from "./Entity";
+import Entity from './Entity';
 declare abstract class Action {
     title: string | null;
     description?: string;

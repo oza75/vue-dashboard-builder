@@ -1,4 +1,3 @@
-import { Components } from '../type';
 import RadioField from './RadioField';
 
 class BooleanField extends RadioField {

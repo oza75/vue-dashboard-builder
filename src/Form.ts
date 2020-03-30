@@ -28,12 +28,12 @@ class Form {
   }
 
   toFormData (): FormData {
-    let f: FormData = new FormData();
-    let rgx: RegExp = new RegExp(DASHBOARD_IMAGE_KEY_PREFIX + '(.*)');
+    const f: FormData = new FormData();
+    const rgx: RegExp = new RegExp(DASHBOARD_IMAGE_KEY_PREFIX + '(.*)');
     Object.keys(this.data).forEach(k => {
-      let tag = k.match(rgx);
+      const tag = k.match(rgx);
       if (tag) {
-        let key: string = tag[1];
+        const key: string = tag[1];
         this.data[key] = this.data[k];
         delete this.data[k];
       }
@@ -46,8 +46,8 @@ class Form {
   }
 
   toObject () {
-    let f: FormData = this.toFormData();
-    let obj: any = {};
+    const f: FormData = this.toFormData();
+    const obj: any = {};
     f.forEach((value, key) => {
       obj[key] = value;
     });

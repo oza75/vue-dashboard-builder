@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Provide, Vue, Watch } from 'vue-property-decorator';
+  import { Component, Watch } from 'vue-property-decorator';
   import { Route } from 'vue-router';
   import Form from '../Form';
   import { mixins } from 'vue-class-component';
@@ -35,18 +35,18 @@
     loading: boolean = false;
 
     fetch (id: string) {
-      let url: string = this.entity.buildShowUrl(this.$admin.config.baseUrl, id);
+      const url: string = this.entity.buildShowUrl(this.$admin.config.baseUrl, id);
       this.$admin.axios.get(url).then((res: any) => {
         this.datum = this.$admin.responseResolver(this.entity).data(res);
         this.fields.forEach(field => {
-          let value = this.datum[field.getColumn()];
+          const value = this.datum[field.getColumn()];
           this.$set(this.formData, field.getColumn(), value);
         });
       }).catch(this.$admin.handleError);
     }
 
     save () {
-      let method: string = this.entity.getUpdateMethod(this.$admin.config.updateMethod).toLowerCase();
+      const method: string = this.entity.getUpdateMethod(this.$admin.config.updateMethod).toLowerCase();
       let formData: FormData | any;
       let request: any;
       if (method === 'post') {
@@ -58,10 +58,11 @@
         request = this.$admin.axios.put;
       }
 
-      let url: string = this.entity.buildUpdateUrl(this.$admin.config.baseUrl, this.datum[this.entity.getKey()]);
+      const url: string = this.entity.buildUpdateUrl(this.$admin.config.baseUrl, this.datum[this.entity.getKey()]);
       this.loading = true;
 
       request(url, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .then((res: any) => {
           this.$router.push({
             name: 'dashboard.show',
@@ -77,7 +78,7 @@
     @Watch('$route', { deep: true, immediate: true })
     onRouteChanged (route: Route) {
       this.routeChanged(route);
-      let id: string = route.params.key;
+      const id: string = route.params.key;
       this.fetch(id);
     }
   }
