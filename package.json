@@ -1,6 +1,6 @@
 {
   "name": "vue-dashboard-builder",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Vuejs Library to generates a dashboard for you",
   "author": {
     "email": "abouba181@gmail.com",
